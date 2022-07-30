@@ -1,6 +1,6 @@
 # http_router
 
-A simple and fast http server router, similar to NodeJS express
+A simple and fast HTTP server router. Combines radix trees with the Crystal HTTP server.
 
 ## Installation
 
@@ -35,12 +35,13 @@ router.listen
 ```
 
 Other methods like put, patch, head, ... are available.<br>
-The HTTP::Router extends the HTTP::Server, so the default server code should work.<br>
+The HTTP::Router extends the HTTP::Server, so the default server code will work.<br>
 "/test/:sth/123" will match any url, which contains something between /test/ and 123,<br>
 so e.g.: "/test/testing/123<br>
-the router can also listen in a non blocking kind of way. The above code would be changed in the following kind of way:<br>
 
-```
+Router can be started blocking or non blocking. The above code blocks. Below is a non blocking example:<br>
+
+```crystal
 proc = router.listen_non_blocking
 # do something
 spawn do
